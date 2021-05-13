@@ -14,7 +14,6 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   search.init({
-    time: DataTypes.DATE,
     description: DataTypes.STRING,
     location: DataTypes.STRING,
     ip: DataTypes.STRING
