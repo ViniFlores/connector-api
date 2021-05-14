@@ -14,13 +14,12 @@ const create = async (req, res) => {
     description: req.query.description.replace('%20', ' ')
   }
   Search.create(data).then(async () => {
-    /* // Solution with backend fetching github jobs data and just then sending it to client
+    // Solution with backend fetching github jobs data and just then sending it to client
     const githubResponse = await fetch(`https://jobs.github.com/positions.json?description=${data.description}&location=${data.location}`)
     res.send(await githubResponse.json())
-    */
 
     // Solution redirecting client to github jobs call
-    res.redirect(`https://jobs.github.com/positions.json?description=${data.description}&location=${data.location}`)
+    //res.redirect(`https://jobs.github.com/positions.json?description=${data.description}&location=${data.location}`)
   }).catch(() => res.send(500))
 }
 
