@@ -14,11 +14,14 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   search.init({
-    description: DataTypes.STRING,
-    location: DataTypes.STRING,
-    ip: DataTypes.STRING
+    description: DataTypes.ENUM('Javascript', 'Java', 'Python', 'React', 'Ruby', 'Go'),
+    location: DataTypes.ENUM('Chicago', 'San Francisco', 'Phoenix', 'London', 'Beijing', 'Paris'),
+    ip: DataTypes.STRING,
   }, {
     sequelize,
+    timestamps: true,
+    createdAt: 'time',
+    updatedAt: false,
     modelName: 'search',
   });
   return search;
