@@ -9,11 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       description: {
-        type: Sequelize.STRING,
+        type: DataTypes.ENUM('Javascript', 'Java', 'Python', 'React', 'Ruby', 'Go'),
         allowNull: false
       },
       location: {
-        type: Sequelize.STRING,
+        type: DataTypes.ENUM('Chicago', 'San Francisco', 'Phoenix', 'London', 'Beijing', 'Paris'),
         allowNull: false
       },
       ip: {
