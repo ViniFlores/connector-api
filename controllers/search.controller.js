@@ -10,8 +10,8 @@ const create = async (req, res) => {
   let ip = req.header('x-forwarded-for') || req.connection.remoteAddress;
   const data = {
     ip: ip,
-    location: req.query.location,
-    description: req.query.description
+    location: req.query.location.replace('%20', ' '),
+    description: req.query.description.replace('%20', ' ')
   }
   Search.create(data).then(async () => {
     /* // Solution with backend fetching github jobs data and just then sending it to client
@@ -24,6 +24,11 @@ const create = async (req, res) => {
   }).catch(() => res.send(500))
 }
 
+const list = async (req, res) => {
+  Search.findAll().then(r => res.send(r)).catch(() => res.send(500))
+}
+
 module.exports = {
-  create
+  create,
+  list
 }
